@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
+
+@import "tailwindcss";
+
+/* ─── Tailwind v4 theme registration ─── */
+@theme {
+  --font-display: "Playfair Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8c97a;
+  --color-bg-primary: #0e0e0f;
+  --color-bg-card: #161618;
+  --color-bg-elevated: #1e1e21;
+  --color-text-primary-custom: #f0ece3;
+  --color-text-muted-custom: #7a7870;
+  --color-text-dim: #3d3c39;
+
+  /* Category accent colors */
+  --color-cars: #5b9cf6;
+  --color-bikes: #f97316;
+  --color-phones: #a78bfa;
+  --color-computers: #34d399;
+}
+
+/* ─── CSS design tokens (for inline styles & non-Tailwind usage) ─── */
+:root {
+  --bg-primary: #0e0e0f;
+  --bg-card: #161618;
+  --bg-elevated: #1e1e21;
+  --accent-gold: #c9a84c;
+  --accent-gold-light: #e8c97a;
+  --text-primary: #3c3b38;
+  --text-muted: #7a7870;
+  --text-dim: #3d3c39;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(201, 168, 76, 0.4);
+}
+
+/* ─── Base resets ─── */
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Grain texture overlay ─── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-dim);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
+
+/* ─── Text selection ─── */
+::selection {
+  background: var(--accent-gold);
+  color: #0e0e0f;
+}
+
+/* ─── Typography helpers ─── */
+/* These are utility classes you use directly in JSX className */
+.font-display {
+  font-family: "Playfair Display", serif;
+}
+
+/* ─── Gold shimmer animation ─── */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--accent-gold),
+    var(--accent-gold-light),
+    var(--accent-gold)
+  );
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ─── Input transition (for the expanding search bar) ─── */
+input[type="text"] {
+  transition: width 0.3s ease, border-color 0.2s ease;
+}
