@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <main className="max-w-7xl mx-auto px-4 py-20">
+      <main className="max-w-7xl mx-auto px-4 py-25">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/item/:itemname" element={<ItemDetail />} />
