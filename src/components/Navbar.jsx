@@ -27,7 +27,7 @@ export default function Navbar() {
         borderColor: scrolled ? "rgba(255,255,255,0.07)" : "transparent",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2 md:gap-0 md:flex-row md:items-center md:justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           {/* Logo mark */}
           <div
